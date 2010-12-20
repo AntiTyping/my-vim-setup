@@ -1,7 +1,0 @@
-1. Clone this repo
-2. Instead of copying files around, link to them:
-  $ cd ~
-  $ ln -s <path to repo>/vimrc .vimrc
-  $ ln -s <path to repo>/gvimrc .gvimrc
-  $ ln -s <path to repo>/vim .vim
-
