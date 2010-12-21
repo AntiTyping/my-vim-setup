@@ -18,5 +18,14 @@ if has("gui_macvim")
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
   map <D-F> :Ack<space>
 
+  " Command-e for ConqueTerm
+  map <D-e> :call StartTerm()<CR>
+
 endif
+
+" ConqueTerm wrapper
+function StartTerm()
+  execute 'ConqueTerm ' . $SHELL . ' --login'
+  setlocal listchars=tab:\ \
+endfunction
 

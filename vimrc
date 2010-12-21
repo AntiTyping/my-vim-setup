@@ -18,6 +18,8 @@ set hidden                        " Handle multiple buffers better.
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
+set wildignore+=log/**
+set wildignore+=tmp/**
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
@@ -47,12 +49,22 @@ set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
 
-set nofoldenable                  " Disable folding
+" Enable folding
+set foldmethod=syntax
 
-colorscheme railscasts
+" Enable a fold column
+set foldcolumn=1
 
-" Show eol, tabs, trailing whitespaces, extends and precedes
-set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
+" Don't fold stuff by default
+set foldlevelstart=99
+
+" Highlight line under the cursor
+set cursorline
+
+colorscheme railscasts-fp
+
+" Show tabs, trailing whitespaces, extends and precedes
+set listchars=tab:>-,trail:·,extends:>,precedes:<
 set list
 
 " map Command-B to bufexplorer
@@ -103,3 +115,10 @@ endfunction
 " Automatic fold settings for specific files. Uncomment to use.
 autocmd FileType ruby setlocal foldmethod=syntax
 autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
+
+
+" Automatically refresh command-t when VIM gains focus
+autocmd FocusGained * :CommandTFlush
+
+" Clear the current search highlight by pressing Esc
+nnoremap <esc> :noh<return><esc>
