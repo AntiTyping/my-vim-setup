@@ -122,3 +122,7 @@ autocmd FocusGained * :CommandTFlush
 
 " Clear the current search highlight by pressing Esc
 nnoremap <esc> :noh<return><esc>
+
+" CTags
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+

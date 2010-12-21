@@ -78,3 +78,7 @@
   path = vim/bundle/snipmate.vim
   url = https://github.com/msanders/snipmate.vim.git
   ignore = untracked
+[submodule "vim/bundle/nerdcommenter"]
+  path = vim/bundle/nerdcommenter
+  url = https://github.com/scrooloose/nerdcommenter.git
+  ignore = untracked
