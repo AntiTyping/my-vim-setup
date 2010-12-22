@@ -115,7 +115,7 @@ endfunction
 " We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
-:autocmd User Rails.view.partial.erb* set sw=4 sts=4
+:autocmd User Rails.view.*.erb set sw=4 sts=4
 
 " Automatically refresh command-t when VIM gains focus
 autocmd FocusGained * :CommandTFlush

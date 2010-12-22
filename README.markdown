@@ -16,6 +16,7 @@ Mostly a big rip-off of [Carl & Yehuda's Janus](https://github.com/carlhuda/janu
         $ ln -s <path to repo>/vimrc .vimrc
         $ ln -s <path to repo>/gvimrc .gvimrc
         $ ln -s <path to repo>/vim .vim
+        $ ln -s <path to repo>/ctags .ctags
 
 ### Additional steps
 You will need to manually setup a few things:
