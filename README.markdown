@@ -1,5 +1,8 @@
 # My Vim setup
 
+## About
+This is my custom vim setup for Rails development.
+Mostly a big rip-off of [Carl & Yehuda's Janus](https://github.com/carlhuda/janus)
 
 ## Steps for installation
 

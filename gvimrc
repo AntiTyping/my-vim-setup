@@ -1,7 +1,5 @@
-" Example Vim graphical configuration.
-" Copy to ~/.gvimrc or ~/_gvimrc.
-
-set guifont=BitStream\ Vera\ Sans\ Mono\ Bold:h13            " Font family and font size.
+" Font family and font size.
+set guifont=Consolas:h14
 set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.
 set guioptions-=T                 " Hide toolbar.

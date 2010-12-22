@@ -41,9 +41,9 @@ set nobackup                      " Don't make a backup before overwriting a fil
 set nowritebackup                 " And again.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
-set tabstop=2                    " Global tab width.
-set shiftwidth=2                 " And again, related.
-set expandtab                    " Use spaces instead of tabs
+set softtabstop=2
+set shiftwidth=2
+set expandtab                     " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
@@ -61,7 +61,7 @@ set foldlevelstart=99
 " Highlight line under the cursor
 set cursorline
 
-colorscheme railscasts-fp
+colorscheme jellybeans-fp
 
 " Show tabs, trailing whitespaces, extends and precedes
 set listchars=tab:>-,trail:·,extends:>,precedes:<
@@ -76,7 +76,7 @@ let g:bufExplorerShowRelativePath=1
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
-" Always remove trailing whitespace when saving file
+" Always remove trailing whitespace before writing the buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
 "jump to last cursor position when opening a file
@@ -112,10 +112,10 @@ let &l:bin = b:save_bin
 endfunction
 " END of eol bunch of code
 
-" Automatic fold settings for specific files. Uncomment to use.
-autocmd FileType ruby setlocal foldmethod=syntax
-autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
-
+" We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
+" See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
+" See: :help rails-'shiftwidth' & :help rails-autocommands
+:autocmd User Rails.view.partial.erb* set sw=4 sts=4
 
 " Automatically refresh command-t when VIM gains focus
 autocmd FocusGained * :CommandTFlush
@@ -123,6 +123,6 @@ autocmd FocusGained * :CommandTFlush
 " Clear the current search highlight by pressing Esc
 nnoremap <esc> :noh<return><esc>
 
-" CTags
+" CTags - refresh tags on <Leader>rt
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
