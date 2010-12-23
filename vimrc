@@ -124,5 +124,6 @@ autocmd FocusGained * :CommandTFlush
 nnoremap <esc> :noh<return><esc>
 
 " CTags - refresh tags on <Leader>rt
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+" jsctags was not that great -- map <Leader>rt :!jsctags .;ctags -a -R --languages=-JavaScript *<CR><CR>
+map <Leader>rt :!ctags -R *<CR><CR>
 
