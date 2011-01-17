@@ -58,8 +58,9 @@ set foldcolumn=1
 " Don't fold stuff by default
 set foldlevelstart=99
 
-" Highlight line under the cursor
-set cursorline
+" Highlight line under the cursor -- commented since it really slows down the
+" rendering
+" set cursorline
 
 colorscheme jellybeans-fp
 
@@ -115,7 +116,10 @@ endfunction
 " We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
-:autocmd User Rails.view.*.erb set sw=4 sts=4
+:autocmd User Rails.view.*.erb* set sw=4 sts=4
+:autocmd User Rails.javascript* set foldlevel=99
+:autocmd User Rails.config* set smartindent
+
 
 " Automatically refresh command-t when VIM gains focus
 autocmd FocusGained * :CommandTFlush
