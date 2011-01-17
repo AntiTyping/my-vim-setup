@@ -49,14 +49,14 @@ set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
 
-" Enable folding
-set foldmethod=syntax
+" Enable folding (commented out since it really slows the rendering)
+" set foldmethod=syntax
 
 " Enable a fold column
-set foldcolumn=1
+" set foldcolumn=1
 
 " Don't fold stuff by default
-set foldlevelstart=99
+" set foldlevelstart=99
 
 " Highlight line under the cursor -- commented since it really slows down the
 " rendering
