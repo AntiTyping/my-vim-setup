@@ -51,6 +51,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 " Enable folding (commented out since it really slows the rendering)
 " set foldmethod=syntax
+set nofoldenable
 
 " Enable a fold column
 " set foldcolumn=1
@@ -116,9 +117,11 @@ endfunction
 " We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
-:autocmd User Rails.view.*.erb* set sw=4 sts=4
-:autocmd User Rails.javascript* set foldlevel=99
+:autocmd User Rails.view.*erb set sw=4 sts=4
+" Indent yaml
 :autocmd User Rails.config* set smartindent
+" Expand tabs in javascript
+:autocmd User Rails.javascript* set expandtab
 
 
 " Automatically refresh command-t when VIM gains focus
