@@ -81,3 +81,6 @@
 [submodule "vim/bundle/simple-pairs"]
 	path = vim/bundle/simple-pairs
 	url = https://github.com/vim-scripts/simple-pairs.git
+[submodule "vim/bundle/ColorSamplerPack"]
+	path = vim/bundle/ColorSamplerPack
+	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
