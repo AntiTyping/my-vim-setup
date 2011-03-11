@@ -123,6 +123,8 @@ endfunction
 :autocmd User Rails.config* set smartindent
 " Expand tabs in javascript
 :autocmd User Rails.javascript* set expandtab
+" Add .mobile.erb as html syntax to vim-rails
+:autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
 
 
 " Automatically refresh command-t when VIM gains focus
