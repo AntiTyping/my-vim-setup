@@ -98,6 +98,7 @@ augroup EOL
 autocmd!
 autocmd BufWritePre * call EolSavePre()
 autocmd BufWritePost * call EolSavePost()
+autocmd BufNewFile * set noeol
 augroup END
 
 " If no eol at end of file, set binary so no eol will be added
