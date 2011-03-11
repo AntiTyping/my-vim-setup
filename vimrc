@@ -78,6 +78,9 @@ let g:bufExplorerShowRelativePath=1
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
+" map Leader-e to :e <path of current file>
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
 " Always remove trailing whitespace before writing the buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
