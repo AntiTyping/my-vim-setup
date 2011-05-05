@@ -126,8 +126,11 @@ endfunction
 :autocmd User Rails.config* set smartindent
 " Expand tabs in javascript
 :autocmd User Rails.javascript* set expandtab
-" Add .mobile.erb as html syntax to vim-rails
+" Cucumber are indented by 2
+:autocmd User Rails.cucumber.feature* set sw=2 sts=2
+" Add .mobile.erb and .pdf.erb as html syntax to vim-rails
 :autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
+:autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
 
 
 " Automatically refresh command-t when VIM gains focus
@@ -137,6 +140,16 @@ autocmd FocusGained * :CommandTFlush
 nnoremap <esc> :noh<return><esc>
 
 " CTags - refresh tags on <Leader>rt
-" jsctags was not that great -- map <Leader>rt :!jsctags .;ctags -a -R --languages=-JavaScript *<CR><CR>
+" jsctags was not that great --
+" map <Leader>rt :!jsctags .;ctags -a -R --languages=-JavaScript *<CR><CR>
 map <Leader>rt :!ctags -R *<CR><CR>
 
+" Disable annoying middle-click paste feature
+:map <MiddleMouse> <Nop>
+:imap <MiddleMouse> <Nop>
+:map <2-MiddleMouse> <Nop>
+:imap <2-MiddleMouse> <Nop>
+:map <3-MiddleMouse> <Nop>
+:imap <3-MiddleMouse> <Nop>
+:map <4-MiddleMouse> <Nop>
+:imap <4-MiddleMouse> <Nop>
