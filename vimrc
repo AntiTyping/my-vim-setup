@@ -126,15 +126,13 @@ endfunction
 :autocmd User Rails.config* set smartindent
 " Expand tabs in javascript
 :autocmd User Rails.javascript* set expandtab
+" sw and sts 2 in coffeescript
+:autocmd User Rails.coffeescript* set sw=2 sts=2
 " Cucumber are indented by 2
 :autocmd User Rails.cucumber.feature* set sw=2 sts=2
 " Add .mobile.erb and .pdf.erb as html syntax to vim-rails
 :autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
 :autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
-
-
-" Automatically refresh command-t when VIM gains focus
-autocmd FocusGained * :CommandTFlush
 
 " Clear the current search highlight by pressing Esc
 nnoremap <esc> :noh<return><esc>

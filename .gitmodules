@@ -2,10 +2,6 @@
   path = vim/bundle/ack.vim
   url = https://github.com/mileszs/ack.vim.git
   ignore = untracked
-[submodule "vim/bundle/command-t"]
-  path = vim/bundle/command-t
-  url = git://git.wincent.com/command-t.git
-  ignore = untracked
 [submodule "vim/bundle/javaScriptLint.vim"]
   path = vim/bundle/javaScriptLint.vim
   url = https://github.com/edsono/javaScriptLint.vim.git
@@ -79,11 +75,18 @@
   url = https://github.com/scrooloose/nerdcommenter.git
   ignore = untracked
 [submodule "vim/bundle/simple-pairs"]
-	path = vim/bundle/simple-pairs
-	url = https://github.com/vim-scripts/simple-pairs.git
+  path = vim/bundle/simple-pairs
+  url = https://github.com/vim-scripts/simple-pairs.git
+  ignore = untracked
 [submodule "vim/bundle/ColorSamplerPack"]
-	path = vim/bundle/ColorSamplerPack
-	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+  path = vim/bundle/ColorSamplerPack
+  url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+  ignore = untracked
 [submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
+  path = vim/bundle/vim-coffee-script
+  url = https://github.com/kchmck/vim-coffee-script.git
+  ignore = untracked
+[submodule "vim/bundle/vim-peepopen"]
+  path = vim/bundle/vim-peepopen
+  url = https://github.com/shemerey/vim-peepopen.git
+  ignore = untracked

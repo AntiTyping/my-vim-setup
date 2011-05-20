@@ -10,7 +10,7 @@ if has("gui_macvim")
   set fuoptions=maxhorz,maxvert
 
   macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
+  map <D-t> <Plug>PeepOpen
 
   " Command-Shift-F for Ack
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
@@ -29,10 +29,3 @@ if has("gui_macvim")
   map <D-R> :NERDTreeFind<CR>
 
 endif
-
-" ConqueTerm wrapper
-function StartTerm()
-  execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \
-endfunction
-
