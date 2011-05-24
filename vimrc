@@ -135,7 +135,7 @@ endfunction
 :autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
 
 " Clear the current search highlight by pressing Esc
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <esc> :noh<cr><esc>
 
 " CTags - refresh tags on <Leader>rt
 " jsctags was not that great --
