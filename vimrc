@@ -75,6 +75,10 @@ nnoremap <C-B> :BufExplorer<cr>
 " Show relative paths in BufExplorer
 let g:bufExplorerShowRelativePath=1
 
+" Command-T
+map <D-t> :CommandT<CR>
+" Automatically refresh command-t when VIM gains focus
+autocmd FocusGained * :CommandTFlush
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
@@ -124,10 +128,8 @@ endfunction
 :autocmd User Rails.view.*erb set sw=4 sts=4
 " Indent yaml
 :autocmd User Rails.config* set smartindent
-" Expand tabs in javascript
-:autocmd User Rails.javascript* set expandtab
-" sw and sts 2 in coffeescript
-:autocmd User Rails.coffeescript* set sw=2 sts=2
+" Expand tabs in javascript, force tab at 2 (Rails.javascript.coffee)
+:autocmd User Rails.javascript* set expandtab sw=2 sts=2
 " Cucumber are indented by 2
 :autocmd User Rails.cucumber.feature* set sw=2 sts=2
 " Add .mobile.erb and .pdf.erb as html syntax to vim-rails

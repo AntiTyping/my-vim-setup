@@ -10,7 +10,6 @@ if has("gui_macvim")
   set fuoptions=maxhorz,maxvert
 
   macmenu &File.New\ Tab key=<nop>
-  map <D-t> <Plug>PeepOpen
 
   " Command-Shift-F for Ack
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>
