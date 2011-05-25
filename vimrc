@@ -153,3 +153,8 @@ map <Leader>rt :!ctags -R *<CR><CR>
 :imap <3-MiddleMouse> <Nop>
 :map <4-MiddleMouse> <Nop>
 :imap <4-MiddleMouse> <Nop>
+
+" CoffeeScript stuff
+" Compile coffeescript on save, show cwindow
+:autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
+:map <Leader>c :CoffeeCompile<CR>
