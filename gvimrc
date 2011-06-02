@@ -23,8 +23,5 @@ if has("gui_macvim")
 
   " Command-Shift-T toggles NERDTree
   macmenu &File.Open\ Tab\.\.\. key=<nop>
-  map <D-T> :NERDTreeToggle<CR>
-  " Command-Shift-R find the current find in NERDTree
-  map <D-R> :NERDTreeFind<CR>
 
 endif

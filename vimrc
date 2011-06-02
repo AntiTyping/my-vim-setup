@@ -158,3 +158,10 @@ map <Leader>rt :!ctags -R *<CR><CR>
 " Compile coffeescript on save, show cwindow
 :autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
 :map <Leader>c :CoffeeCompile<CR>
+
+" NERDTree
+map <D-T> :NERDTreeToggle<CR>
+" Command-Shift-R find the current find in NERDTree
+map <D-R> :NERDTreeFind<CR>
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
