@@ -160,8 +160,11 @@ map <Leader>rt :!ctags -R *<CR><CR>
 :map <Leader>c :CoffeeCompile<CR>
 
 " NERDTree
+" Command-T opens NERDTree
 map <D-T> :NERDTreeToggle<CR>
 " Command-Shift-R find the current find in NERDTree
 map <D-R> :NERDTreeFind<CR>
+" When opening vim, open the nerdtree window
 autocmd VimEnter * NERDTree
+" And restore focus to the right pane
 autocmd VimEnter * wincmd p
