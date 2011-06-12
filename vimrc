@@ -47,7 +47,7 @@ set expandtab                     " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=%-16(\ %l,%c-%v\ %)%P
 
 " Enable folding (commented out since it really slows the rendering)
 " set foldmethod=syntax
@@ -125,16 +125,16 @@ endfunction
 " We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
-:autocmd User Rails.view.*erb set sw=4 sts=4
+autocmd User Rails.view.*erb set sw=4 sts=4
 " Indent yaml
-:autocmd User Rails.config* set smartindent
+autocmd User Rails.config* set smartindent
 " Expand tabs in javascript, force tab at 2 (Rails.javascript.coffee)
-:autocmd User Rails.javascript* set expandtab sw=2 sts=2
+autocmd User Rails.javascript* set expandtab sw=2 sts=2
 " Cucumber are indented by 2
-:autocmd User Rails.cucumber.feature* set sw=2 sts=2
+autocmd User Rails.cucumber.feature* set sw=2 sts=2
 " Add .mobile.erb and .pdf.erb as html syntax to vim-rails
-:autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
-:autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
+autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
+autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
 
 " Clear the current search highlight by pressing Esc
 nnoremap <silent> <esc> :noh<cr><esc>
@@ -145,19 +145,19 @@ nnoremap <silent> <esc> :noh<cr><esc>
 map <Leader>rt :!ctags -R *<CR><CR>
 
 " Disable annoying middle-click paste feature
-:map <MiddleMouse> <Nop>
-:imap <MiddleMouse> <Nop>
-:map <2-MiddleMouse> <Nop>
-:imap <2-MiddleMouse> <Nop>
-:map <3-MiddleMouse> <Nop>
-:imap <3-MiddleMouse> <Nop>
-:map <4-MiddleMouse> <Nop>
-:imap <4-MiddleMouse> <Nop>
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
 
 " CoffeeScript stuff
 " Compile coffeescript on save (with -p so it does not save the .js, just check syntax for errors), show cwindow
-:autocmd BufWritePost *.coffee silent CoffeeMake! -p | cwindow
-:map <Leader>c :CoffeeCompile<CR>
+":autocmd BufWritePost *.coffee silent CoffeeMake! -p | cwindow
+map <Leader>c :CoffeeCompile<CR>
 
 " NERDTree
 " Command-T opens NERDTree
@@ -168,3 +168,7 @@ map <D-R> :NERDTreeFind<CR>
 autocmd VimEnter * NERDTree
 " And restore focus to the right pane
 autocmd VimEnter * wincmd p
+
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1

@@ -2,10 +2,6 @@
   path = vim/bundle/ack.vim
   url = https://github.com/mileszs/ack.vim.git
   ignore = untracked
-[submodule "vim/bundle/javaScriptLint.vim"]
-  path = vim/bundle/javaScriptLint.vim
-  url = https://github.com/edsono/javaScriptLint.vim.git
-  ignore = untracked
 [submodule "vim/bundle/vim-cucumber"]
   path = vim/bundle/vim-cucumber
   url = https://github.com/tpope/vim-cucumber.git
@@ -73,4 +69,8 @@
 [submodule "vim/bundle/command-t"]
   path = vim/bundle/command-t
   url = git://git.wincent.com/command-t.git
+  ignore = untracked
+[submodule "vim/bundle/syntastic"]
+  path = vim/bundle/syntastic
+  url = https://github.com/scrooloose/syntastic.git
   ignore = untracked
