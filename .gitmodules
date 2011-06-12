@@ -82,3 +82,7 @@
   path = vim-pathogen
   url = https://github.com/tpope/vim-pathogen.git
   ignore = untracked
+[submodule "vim/bundle/vim-ruby"]
+  path = vim/bundle/vim-ruby
+  url = https://github.com/vim-ruby/vim-ruby.git
+  ignore = untracked
