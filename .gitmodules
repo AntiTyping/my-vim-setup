@@ -70,15 +70,11 @@
   path = vim/bundle/command-t
   url = git://git.wincent.com/command-t.git
   ignore = untracked
-[submodule "vim/bundle/syntastic"]
-  path = vim/bundle/syntastic
-  url = https://github.com/scrooloose/syntastic.git
-  ignore = untracked
-[submodule "vim/bundles/Color-Sampler-Pack"]
-  path = vim/bundles/Color-Sampler-Pack
-  url = https://github.com/vim-scripts/Color-Sampler-Pack.git
-  ignore = untracked
 [submodule "vim/bundle/Color-Sampler-Pack"]
   path = vim/bundle/Color-Sampler-Pack
   url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+  ignore = untracked
+[submodule "vim/bundle/syntastic"]
+  path = vim/bundle/syntastic
+  url = git@github.com:fpbouchard/syntastic.git
   ignore = untracked
