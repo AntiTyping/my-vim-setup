@@ -74,3 +74,11 @@
   path = vim/bundle/syntastic
   url = https://github.com/scrooloose/syntastic.git
   ignore = untracked
+[submodule "vim/bundles/Color-Sampler-Pack"]
+  path = vim/bundles/Color-Sampler-Pack
+  url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+  ignore = untracked
+[submodule "vim/bundle/Color-Sampler-Pack"]
+  path = vim/bundle/Color-Sampler-Pack
+  url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+  ignore = untracked
