@@ -1,13 +1,12 @@
-" Example Vim configuration.
-" Copy or symlink to ~/.vimrc or ~/_vimrc.
-
-set nocompatible                  " Must come first because it changes other options.
-
 call pathogen#infect()
 call pathogen#helptags()
 
+set nocompatible                  " Must come first because it changes other options.
+
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
+
+set autoindent
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -66,7 +65,7 @@ set nofoldenable
 colorscheme jellybeans-fp
 
 " Show tabs, trailing whitespaces, extends and precedes
-set listchars=tab:>-,trail:·,extends:>,precedes:<
+set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:+
 set list
 
 " map Command-B to bufexplorer
