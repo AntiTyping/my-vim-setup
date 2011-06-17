@@ -136,6 +136,8 @@ autocmd User Rails.cucumber.feature* set sw=2 sts=2
 " Add .mobile.erb and .pdf.erb as html syntax to vim-rails
 autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
 autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
+" Add macro to convert sass2 files to sass3 syntax
+autocmd FileType sass map <buffer> <Leader>c :!sass-convert -i -f sass2 %<CR>
 
 " Clear the current search highlight by pressing Esc
 nnoremap <silent> <esc> :noh<cr><esc>
