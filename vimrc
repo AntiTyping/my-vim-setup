@@ -60,11 +60,10 @@ set nofoldenable
 " Don't fold stuff by default
 " set foldlevelstart=99
 
-" Highlight line under the cursor -- commented since it really slows down the
-" rendering
-" set cursorline
+" Highlight line under the cursor -- commented since it really slows down the rendering
+"set cursorline
 
-colorscheme jellybeans-fp
+colorscheme desert
 
 " Show tabs, trailing whitespaces, extends and precedes
 set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:+
