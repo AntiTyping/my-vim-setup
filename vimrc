@@ -157,9 +157,10 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 " CoffeeScript stuff
-" Compile coffeescript on save (with -p so it does not save the .js, just check syntax for errors), show cwindow
+" Compile coffeescript on save (with -p so it does not save the .js, just check syntax for errors), show cwindow -- commented since now included in Syntastic
 ":autocmd BufWritePost *.coffee silent CoffeeMake! -p | cwindow
-map <Leader>c :CoffeeCompile<CR>
+" Leader-C compiles a snippet
+noremap <Leader>c :CoffeeCompile<CR>
 
 " NERDTree
 " Command-T opens NERDTree
