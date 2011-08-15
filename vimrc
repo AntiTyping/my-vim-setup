@@ -3,9 +3,6 @@ call pathogen#helptags()
 
 set nocompatible                  " Must come first because it changes other options.
 
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
-
 set autoindent
 
 set showcmd                       " Display incomplete commands.
@@ -69,6 +66,11 @@ colorscheme desert
 set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:+
 set list
 
+filetype plugin on
+filetype indent on
+
+syntax on
+
 " map Command-B to bufexplorer
 nnoremap <C-B> :BufExplorer<cr>
 
@@ -85,8 +87,19 @@ let g:CommandTMaxHeight=20
 " map Leader-e to :e <path of current file>
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" Always remove trailing whitespace before writing the buffer
-autocmd BufWritePre * :%s/\s\+$//e
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -122,21 +135,33 @@ let &l:bin = b:save_bin
 endfunction
 " END of eol bunch of code
 
+" Add .mobile.erb and .pdf.erb as html syntax to vim-rails
+" Only setting the subtype was not working, I had to reset the filetype once
+" the subtype is set. See: https://github.com/vim-ruby/vim-ruby/issues/34
+autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype='html'
+autocmd BufNewFile,BufRead *.mobile.erb set filetype=eruby
+autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype='html'
+autocmd BufNewFile,BufRead *.pdf.erb set filetype=eruby
+
 " We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
 autocmd User Rails.view.*erb set sw=4 sts=4
 " Indent yaml
 autocmd User Rails.config* set smartindent
-" Expand tabs in javascript, force tab at 2 (Rails.javascript.coffee)
+" Expand tabs in javascript, force tab at 2 (also covers CoffeeScript: Rails.javascript.coffee)
 autocmd User Rails.javascript* set expandtab sw=2 sts=2
 " Cucumber are indented by 2
 autocmd User Rails.cucumber.feature* set sw=2 sts=2
-" Add .mobile.erb and .pdf.erb as html syntax to vim-rails
-autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
-autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype = 'html'
+
 " Add macro to convert sass2 files to sass3 syntax
 autocmd FileType sass map <buffer> <Leader>c :!sass-convert -i -f sass2 %<CR>
+
+" CoffeeScript stuff
+" Compile coffeescript on save (with -p so it does not save the .js, just check syntax for errors), show cwindow -- commented since now included in Syntastic
+":autocmd BufWritePost *.coffee silent CoffeeMake! -p | cwindow
+" Leader-C compiles a snippet
+autocmd FileType coffee noremap <buffer> <Leader>c :CoffeeCompile<CR>
 
 " Clear the current search highlight by pressing Esc
 nnoremap <silent> <esc> :noh<cr><esc>
@@ -156,22 +181,30 @@ imap <3-MiddleMouse> <Nop>
 map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
-" CoffeeScript stuff
-" Compile coffeescript on save (with -p so it does not save the .js, just check syntax for errors), show cwindow -- commented since now included in Syntastic
-":autocmd BufWritePost *.coffee silent CoffeeMake! -p | cwindow
-" Leader-C compiles a snippet
-noremap <Leader>c :CoffeeCompile<CR>
-
 " NERDTree
 " Command-T opens NERDTree
 map <D-T> :NERDTreeToggle<CR>
 " Command-Shift-R find the current find in NERDTree
 map <D-R> :NERDTreeFind<CR>
 " When opening vim, open the nerdtree window
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " And restore focus to the right pane
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+" Auto align | in cucumber features
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction

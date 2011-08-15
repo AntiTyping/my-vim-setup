@@ -34,10 +34,6 @@
   path = vim/bundle/nerdtree
   url = https://github.com/scrooloose/nerdtree.git
   ignore = untracked
-[submodule "vim/bundle/vim-align"]
-  path = vim/bundle/vim-align
-  url = https://github.com/tsaleh/vim-align.git
-  ignore = untracked
 [submodule "vim/bundle/vim-markdown"]
   path = vim/bundle/vim-markdown
   url = git://github.com/tpope/vim-markdown.git
@@ -81,4 +77,12 @@
 [submodule "vim/bundle/vim-ruby"]
   path = vim/bundle/vim-ruby
   url = https://github.com/vim-ruby/vim-ruby.git
+  ignore = untracked
+[submodule "vim/bundle/tabular"]
+  path = vim/bundle/tabular
+  url = https://github.com/godlygeek/tabular.git
+  ignore = untracked
+[submodule "vim/bundle/vim-align"]
+  path = vim/bundle/vim-align
+  url = https://github.com/clones/vim-align.git
   ignore = untracked
