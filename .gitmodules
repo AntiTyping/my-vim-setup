@@ -82,6 +82,7 @@
   path = vim/bundle/vim-align
   url = https://github.com/clones/vim-align.git
   ignore = untracked
-[submodule "vim/bundles/syntastic"]
-	path = vim/bundles/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/syntastic"]
+  path = vim/bundle/syntastic
+  url = https://github.com/scrooloose/syntastic.git
+  ignore = untracked
