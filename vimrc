@@ -71,9 +71,11 @@ filetype indent on
 
 syntax on
 
-" map Command-B to minibufexplorer
-nnoremap <C-B> :MiniBufExplorer<cr>
-let g:miniBufExplMapCTabSwitchBufs = 1
+" map Command-B to bufexplorer
+nnoremap <C-B> :BufExplorer<cr>
+
+" Show relative paths in BufExplorer
+let g:bufExplorerShowRelativePath=1
 
 " Command-T
 map <D-t> :CommandT<CR>
