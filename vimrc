@@ -163,6 +163,12 @@ autocmd FileType sass map <buffer> <Leader>c :!sass-convert -i -f sass2 %<CR>
 " Leader-C compiles a snippet
 autocmd FileType coffee noremap <buffer> <Leader>c :CoffeeCompile<CR>
 
+" Macro to realign routes (replace all multiple spaces (no on start of line) with single spaces (/e to ignore errors), reselect selection (gv), tabularize on spaces
+autocmd FileType ruby vnoremap <buffer> <Leader>r :s/\v(\S)@<=\s{2,}/ /ge<CR>gv:Tabularize / /l0<CR>:noh<CR>
+
+" Add macro to convert js files to CoffeeScript
+autocmd FileType javascript noremap <buffer> <Leader>c :!js2coffee %<CR>
+
 " Clear the current search highlight by pressing Esc
 nnoremap <silent> <esc> :noh<cr><esc>
 
@@ -196,9 +202,9 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
 " Auto align | in cucumber features
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align_cukes()<CR>a
 
-function! s:align()
+function! s:align_cukes()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
@@ -208,3 +214,24 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+" Route aligning (note, this is dependent on the 'routes' tabular pipeline
+" found in ~/.vim/after/plugin
+
+inoremap <silent> : :<Esc>:call <SID>align_routes()<CR>a
+noremap <silent> <Leader>r :Tabularize routes<CR>
+
+function! s:align_routes()
+  let p = '\v\s+map.*\s+.*$'
+  if exists(':Tabularize') && getline('.') =~# '\v^\s*map' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^:]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*:\s*\zs.*'))
+
+    Tabularize routes
+
+    normal! 0
+    call search(repeat('[^:]*:',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
