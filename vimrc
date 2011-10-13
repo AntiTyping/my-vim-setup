@@ -49,7 +49,6 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 " Enable folding (commented out since it really slows the rendering)
 " set foldmethod=syntax
-set nofoldenable
 
 " Enable a fold column
 " set foldcolumn=1
@@ -143,10 +142,10 @@ autocmd BufNewFile,BufRead *.mobile.erb set filetype=eruby
 autocmd BufNewFile,BufRead *.pdf.erb let b:eruby_subtype='html'
 autocmd BufNewFile,BufRead *.pdf.erb set filetype=eruby
 
-" We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files :(
+" We are stuck with a non-Rails standard shiftwidth of 4 in our html.erb files in petalmd :(
 " See: https://github.com/tpope/vim-rails/issues/unreads#issue/33
 " See: :help rails-'shiftwidth' & :help rails-autocommands
-autocmd User Rails.view.*erb set sw=4 sts=4
+autocmd User Rails.view.*erb if getcwd() =~ 'code/petalmd$' | set sw=4 sts=4 | endif
 " Indent yaml
 autocmd User Rails.config* set smartindent
 " Expand tabs in javascript, force tab at 2 (also covers CoffeeScript: Rails.javascript.coffee)
@@ -163,16 +162,13 @@ autocmd FileType sass map <buffer> <Leader>c :!sass-convert -i -f sass2 %<CR>
 " Leader-C compiles a snippet
 autocmd FileType coffee noremap <buffer> <Leader>c :CoffeeCompile<CR>
 
-" Macro to realign routes (replace all multiple spaces (no on start of line) with single spaces (/e to ignore errors), reselect selection (gv), tabularize on spaces
-autocmd FileType ruby vnoremap <buffer> <Leader>r :s/\v(\S)@<=\s{2,}/ /ge<CR>gv:Tabularize / /l0<CR>:noh<CR>
-
 " Add macro to convert js files to CoffeeScript
 autocmd FileType javascript noremap <buffer> <Leader>c :!js2coffee %<CR>
 
 " Clear the current search highlight by pressing Esc
 nnoremap <silent> <esc> :noh<cr><esc>
 
-" CTags - refresh tags on <Leader>rt
+" CTags - refresh tags
 " jsctags was not that great --
 " map <Leader>rt :!jsctags .;ctags -a -R --languages=-JavaScript *<CR><CR>
 map <Leader>rt :!ctags -R *<CR><CR>
@@ -219,7 +215,7 @@ endfunction
 " found in ~/.vim/after/plugin
 
 inoremap <silent> : :<Esc>:call <SID>align_routes()<CR>a
-noremap <silent> <Leader>r :Tabularize routes<CR>
+noremap <silent> <Leader>tr :Tabularize routes<CR>
 
 function! s:align_routes()
   let p = '\v\s+map.*\s+.*$'
@@ -235,3 +231,15 @@ function! s:align_routes()
   endif
 endfunction
 
+" Close the quickfix window with <Leader>l
+noremap <Leader>l :lcl<CR>
+
+" Enable folding by <Leader>f
+noremap <Leader>f :setlocal foldmethod=syntax foldcolumn=4<CR>
+
+" Toggle fullscreen with cmd-enter
+set fuopt+=maxhorz
+map <D-CR> :set invfu<CR>
+
+" Select last pasted text with gp
+nnoremap gp `[v`]
