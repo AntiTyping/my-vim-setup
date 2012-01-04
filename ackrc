@@ -1,0 +1,10 @@
+--sort-files
+--color
+--context=1
+--follow
+--group
+--type-add=ruby=.haml,.rake,.sass,.feature,.csv
+--type-set=bin=.pdf,.pid
+--type-add=vim=.vim
+--type-set=coffee=.coffee
+--nobin
