@@ -197,6 +197,12 @@ map <D-R> :NERDTreeFind<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" vim-ruby-doc
+let g:ruby_doc_command='open'
+
+" Always open the quick fix window after a quick fix command
+autocmd QuickFixCmdPost *grep* cwindow
+
 " Auto align | in cucumber features
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align_cukes()<CR>a
 
