@@ -42,10 +42,6 @@
   path = vim/bundle/vim-javascript
   url = git://github.com/pangloss/vim-javascript.git
   ignore = untracked
-[submodule "vim/bundle/snipmate.vim"]
-  path = vim/bundle/snipmate.vim
-  url = https://github.com/msanders/snipmate.vim.git
-  ignore = untracked
 [submodule "vim/bundle/nerdcommenter"]
   path = vim/bundle/nerdcommenter
   url = https://github.com/scrooloose/nerdcommenter.git
@@ -89,9 +85,12 @@
 [submodule "vim/bundle/vim-endwise"]
   path = vim/bundle/vim-endwise
   url = https://github.com/tpope/vim-endwise.git
+  ignore = untracked
 [submodule "vim/bundle/vim-sparkup"]
   path = vim/bundle/vim-sparkup
   url = http://github.com/bingaman/vim-sparkup.git
+  ignore = untracked
 [submodule "vim/bundle/vim-ruby-doc"]
-	path = vim/bundle/vim-ruby-doc
-	url = git://github.com/lucapette/vim-ruby-doc.git
+  path = vim/bundle/vim-ruby-doc
+  url = git://github.com/lucapette/vim-ruby-doc.git
+  ignore = untracked
