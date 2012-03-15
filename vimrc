@@ -74,8 +74,8 @@ filetype indent on
 
 syntax on
 
-" Buf explorer on Command-B
-map <D-b> :BufExplorer<CR>
+" Buf explorer on Ctrl-B
+map <C-b> :BufExplorer<CR>
 " Show relative paths in BufExplorer
 let g:bufExplorerShowRelativePath=1
 
