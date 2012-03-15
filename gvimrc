@@ -9,7 +9,9 @@ if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
+  " <D-T> and <D-B> are remapped
   macmenu &File.New\ Tab key=<nop>
+  macmenu &Tools.Make key=<nop>
 
   " Command-Shift-F for Ack
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<nop>

@@ -70,9 +70,8 @@ filetype indent on
 
 syntax on
 
-" map Command-B to bufexplorer
-nnoremap <C-B> :BufExplorer<cr>
-
+" Buf explorer on Command-B
+map <D-b> :BufExplorer<CR>
 " Show relative paths in BufExplorer
 let g:bufExplorerShowRelativePath=1
 
