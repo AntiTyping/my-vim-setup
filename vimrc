@@ -59,6 +59,10 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 " Highlight line under the cursor -- commented since it really slows down the rendering
 "set cursorline
 
+" Split below and right
+set splitbelow
+set splitright
+
 colorscheme desert
 
 " Show tabs, trailing whitespaces, extends and precedes
