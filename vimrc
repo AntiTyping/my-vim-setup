@@ -79,6 +79,9 @@ map <D-b> :BufExplorer<CR>
 " Show relative paths in BufExplorer
 let g:bufExplorerShowRelativePath=1
 
+" Enable matchit
+runtime! macros/matchit.vim
+
 " Command-T
 map <D-t> :CommandT<CR>
 " Automatically refresh command-t when VIM gains focus
